@@ -109,40 +109,37 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .nav { display: flex; gap: 32px; }
-    .nav a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color 0.15s;
-    }
-    .nav a:hover { color: var(--text); }
+    .header-right { display: flex; align-items: center; gap: 8px; }
 
-    .header-ctas { display: flex; gap: 12px; align-items: center; }
-
-    .btn-ghost {
-      padding: 8px 18px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
+    .nav-link {
+      padding: 8px 16px;
       font-size: 0.875rem;
       font-weight: 500;
       color: var(--muted);
       background: transparent;
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .btn-ghost:hover { color: var(--text); border-color: #555; }
-
-    .btn-primary {
-      padding: 8px 18px;
       border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .btn-login {
+      padding: 8px 20px;
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       font-size: 0.875rem;
       font-weight: 600;
-      color: #fff;
-      background: var(--accent);
-      transition: background 0.15s, transform 0.1s;
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      text-decoration: none;
+      display: inline-block;
     }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-login:hover { border-color: #555; background: rgba(255,255,255,0.05); }
 
     /* ════════════════════════════════════════════════════════════════════════
        HERO
@@ -1045,15 +1042,11 @@
 ════════════════════════════════════════════════════════════════════════ -->
 <header id="site-header">
   <div class="header-inner">
-    <div class="logo">Tabifi</div>
-    <nav class="nav">
-      <a href="#how-it-works">How it Works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#about">About Us</a>
-    </nav>
-    <div class="header-ctas">
-      <button class="btn-ghost">Login</button>
-      <button class="btn-primary" onclick="document.getElementById('tool-section').scrollIntoView({behavior:'smooth'})">Get Started</button>
+    <a href="/" class="logo">Tabifi</a>
+    <div class="header-right">
+      <a href="/pricing.html" class="nav-link">Pricing</a>
+      <a href="/about.html" class="nav-link">About Us</a>
+      <a href="/login.html" class="btn-login">Login</a>
     </div>
   </div>
 </header>
@@ -1420,9 +1413,9 @@
     <div class="footer-inner">
       <div class="logo">Tabifi</div>
       <div class="footer-links">
-        <a href="#how-it-works">How it Works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#about">About</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/about.html">About</a>
+        <a href="/login.html">Login</a>
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
       </div>

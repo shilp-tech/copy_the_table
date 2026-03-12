@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Tabifi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a0a;
+      --surface:   #111111;
+      --surface2:  #161616;
+      --border:    #2a2a2a;
+      --border2:   #1e1e1e;
+      --text:      #ffffff;
+      --muted:     #888888;
+      --muted2:    #555555;
+      --accent:    #7c6cff;
+      --accent2:   #5b4fd4;
+      --green:     #22c55e;
+      --radius:    14px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.12;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: #4f8bff; bottom: 0; left: -100px; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Header ── */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+    #site-header.scrolled {
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: var(--border);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header-right { display: flex; align-items: center; gap: 8px; }
+    .nav-link {
+      padding: 8px 16px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-link.active { color: var(--text); }
+    .btn-login {
+      padding: 8px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-login:hover { border-color: #555; background: rgba(255,255,255,0.05); }
+
+    /* ── Page content ── */
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      padding: 160px 0 100px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    /* Toggle */
+    .billing-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin: 28px auto 0;
+    }
+
+    .billing-toggle span {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .billing-toggle span.active { color: var(--text); }
+
+    .toggle-pill {
+      width: 36px; height: 20px;
+      background: var(--accent);
+      border-radius: 100px;
+      position: relative;
+      cursor: pointer;
+    }
+    .toggle-pill::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 14px; height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .save-badge {
+      background: rgba(34,197,94,0.15);
+      color: #4ade80;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 100px;
+      border: 1px solid rgba(34,197,94,0.2);
+    }
+
+    /* Pricing grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 780px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 30px;
+      position: relative;
+    }
+
+    .pricing-card.highlighted {
+      background: linear-gradient(135deg, rgba(124,108,255,0.1), rgba(79,139,255,0.05));
+      border-color: var(--accent);
+      transform: scale(1.04);
+      box-shadow: 0 0 40px rgba(124,108,255,0.12);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .pricing-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .pricing-price sup {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      vertical-align: super;
+    }
+    .pricing-price span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+
+    .pricing-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: #ccc;
+    }
+
+    .check {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.15);
+      color: var(--green);
+      font-size: 9px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pricing-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .pricing-btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .pricing-btn-outline:hover { border-color: #555; background: rgba(255,255,255,0.04); }
+
+    .pricing-btn-filled {
+      background: var(--accent);
+      color: #fff;
+    }
+    .pricing-btn-filled:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(124,108,255,0.3); }
+
+    /* FAQ */
+    .faq-section {
+      margin-top: 100px;
+    }
+
+    .faq-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      text-align: left;
+      padding: 18px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: background 0.15s;
+    }
+    .faq-q:hover { background: rgba(255,255,255,0.03); }
+
+    .faq-arrow {
+      font-size: 12px;
+      color: var(--muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      display: none;
+      padding: 0 20px 18px;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.82rem; color: var(--muted); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted2); }
+  </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<header id="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">Tabifi</a>
+    <div class="header-right">
+      <a href="/pricing.html" class="nav-link active">Pricing</a>
+      <a href="/about.html" class="nav-link">About Us</a>
+      <a href="/login.html" class="btn-login">Login</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="container">
+
+    <div class="page-header">
+      <div class="section-label">Pricing</div>
+      <h1>Simple, transparent pricing</h1>
+      <p>Start free. Upgrade when you need more extractions or team features.</p>
+      <div class="billing-toggle">
+        <span class="active">Monthly</span>
+        <div class="toggle-pill"></div>
+        <span>Annual</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-name">Free</div>
+        <div class="pricing-price">$0</div>
+        <div class="pricing-desc">Forever free — no credit card required</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> 10 extractions per month</li>
+          <li><span class="check">✓</span> Single screenshot mode</li>
+          <li><span class="check">✓</span> Copy as HTML table</li>
+          <li><span class="check">✓</span> Editable cells before copy</li>
+          <li><span class="check">✓</span> Works with Word & Google Docs</li>
+        </ul>
+        <button class="pricing-btn pricing-btn-outline" onclick="window.location.href='/'">Try the Tool Free</button>
+      </div>
+
+      <div class="pricing-card highlighted">
+        <div class="popular-badge">Most Popular</div>
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-price"><sup>$</sup>9<span>/mo</span></div>
+        <div class="pricing-desc">For individuals and power users who need more</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Unlimited extractions</li>
+          <li><span class="check">✓</span> Multi-screenshot stitching</li>
+          <li><span class="check">✓</span> Up to 10 images per batch</li>
+          <li><span class="check">✓</span> Priority AI processing</li>
+          <li><span class="check">✓</span> Export to CSV</li>
+          <li><span class="check">✓</span> Email support</li>
+        </ul>
+        <button class="pricing-btn pricing-btn-filled">Start Pro — Free 7-day Trial</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-name">Team</div>
+        <div class="pricing-price"><sup>$</sup>29<span>/mo</span></div>
+        <div class="pricing-desc">For teams that need shared access and management</div>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> Everything in Pro</li>
+          <li><span class="check">✓</span> Up to 10 team members</li>
+          <li><span class="check">✓</span> Shared monthly extraction pool</li>
+          <li><span class="check">✓</span> Admin usage dashboard</li>
+          <li><span class="check">✓</span> SSO / SAML (coming soon)</li>
+          <li><span class="check">✓</span> Priority email & chat support</li>
+        </ul>
+        <button class="pricing-btn pricing-btn-outline">Contact Sales</button>
+      </div>
+
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <div class="faq-title">Frequently asked questions</div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q">What counts as one extraction? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">One extraction = one screenshot processed by the AI. In multi-screenshot mode, each image in a batch counts as one extraction.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Does the free plan expire? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">No. The free plan is free forever. You get 10 extractions every month, which resets on the 1st of each month.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">What file formats are supported? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">PNG, JPG, WEBP, and GIF are all supported. Maximum 10 MB per image.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Can I cancel anytime? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">Yes. Cancel anytime from your account settings. You'll keep Pro access until the end of your billing period.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Is my data stored? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">Images are sent to OpenAI's API for processing and are not stored by Tabifi after extraction. We never retain your table data.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="/" class="logo">Tabifi</a>
+      <div class="footer-links">
+        <a href="/pricing.html">Pricing</a>
+        <a href="/about.html">About</a>
+        <a href="/login.html">Login</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-copy">© 2025 Tabifi. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  window.addEventListener("scroll", () => {
+    document.getElementById("site-header").classList.toggle("scrolled", window.scrollY > 40);
+  });
+
+  gsap.from(".page-header", { opacity: 0, y: 30, duration: 0.7, delay: 0.1, ease: "power3.out" });
+  gsap.from(".pricing-card", {
+    opacity: 0, y: 40, duration: 0.6, stagger: 0.12, delay: 0.35, ease: "power3.out"
+  });
+
+  // FAQ accordion
+  document.querySelectorAll(".faq-q").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+      if (!isOpen) item.classList.add("open");
+    });
+  });
+</script>
+</body>
+</html>
