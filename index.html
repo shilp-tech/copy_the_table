@@ -1027,8 +1027,6 @@
       margin: 0;
     }
 
-    /* ── GSAP initial states ──────────────────────────────────────────────── */
-    .gsap-fade { opacity: 0; transform: translateY(30px); }
   </style>
 </head>
 <body>
@@ -1056,7 +1054,7 @@
 ════════════════════════════════════════════════════════════════════════ -->
 <section id="problem-solution" class="section">
   <div class="container">
-    <div class="ps-grid gsap-fade">
+    <div class="ps-grid" id="ps-grid">
       <div class="ps-card before">
         <div class="ps-tag before-tag">✕ &nbsp;The Problem</div>
         <h3>Copy-paste destroys table formatting</h3>
@@ -1090,7 +1088,7 @@
 ════════════════════════════════════════════════════════════════════════ -->
 <section id="tool-section" class="section">
   <div class="container">
-    <div class="tool-card gsap-fade">
+    <div class="tool-card" id="tool-card">
 
       <!-- Mode toggle -->
       <div class="mode-toggle">
@@ -1207,23 +1205,9 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero — fade up on load
-gsap.from("#hero-badge",  { opacity: 0, y: 20, duration: 0.6, delay: 0.1, ease: "power3.out" });
-gsap.from("#hero-title",  { opacity: 0, y: 30, duration: 0.7, delay: 0.25, ease: "power3.out" });
-gsap.from("#hero-sub",    { opacity: 0, y: 20, duration: 0.6, delay: 0.4,  ease: "power3.out" });
-gsap.from("#hero-ctas",   { opacity: 0, y: 20, duration: 0.6, delay: 0.55, ease: "power3.out" });
-gsap.from("#hero-trust",  { opacity: 0, y: 10, duration: 0.5, delay: 0.7,  ease: "power3.out" });
-
-// Sections — animate in on scroll
-document.querySelectorAll(".gsap-fade").forEach((el) => {
-  gsap.from(el, {
-    scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
-    opacity: 0,
-    y: 32,
-    duration: 0.65,
-    ease: "power3.out",
-  });
-});
+// Problem/solution + tool — fade up on load (already in viewport)
+gsap.from("#ps-grid",   { opacity: 0, y: 28, duration: 0.65, delay: 0.15, ease: "power3.out" });
+gsap.from("#tool-card", { opacity: 0, y: 28, duration: 0.65, delay: 0.35, ease: "power3.out" });
 
 // Header frosted glass on scroll
 window.addEventListener("scroll", () => {
