@@ -145,7 +145,7 @@
        HERO
     ════════════════════════════════════════════════════════════════════════ */
     #hero {
-      padding: 180px 0 120px;
+      padding: 140px 0 40px;
       text-align: center;
       position: relative;
       z-index: 1;
@@ -672,16 +672,97 @@
        PROBLEM VS SOLUTION
     ════════════════════════════════════════════════════════════════════════ */
     #problem-solution {
-      padding: 100px 0 48px;
+      padding: 72px 0 48px;
       position: relative;
       z-index: 1;
+    }
+
+    .ps-section-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .ps-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .ps-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .ps-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
     }
 
     .ps-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      margin-top: 56px;
+    }
+
+    /* ════════════════════════════════════════════════════════════════════════
+       HOW IT WORKS
+    ════════════════════════════════════════════════════════════════════════ */
+    #how-it-works {
+      padding: 80px 0 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    @media (max-width: 700px) { .hiw-grid { grid-template-columns: 1fr; } }
+
+    .hiw-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .hiw-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .hiw-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--border);
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .hiw-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hiw-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
     }
 
     @media (max-width: 640px) { .ps-grid { grid-template-columns: 1fr; } }
@@ -1080,39 +1161,13 @@
 </header>
 
 <!-- ════════════════════════════════════════════════════════════════════════
-     PROBLEM + SOLUTION
+     HERO
 ════════════════════════════════════════════════════════════════════════ -->
-<section id="problem-solution" class="section">
+<section id="hero" class="section">
   <div class="container">
-    <div class="ps-grid" id="ps-grid">
-      <div class="ps-card before">
-        <div class="ps-tag before-tag">✕ &nbsp;The Problem</div>
-        <h3>Copy-paste destroys table formatting</h3>
-        <p>When you copy a table from ChatGPT or Claude and paste it into Word, you get a wall of text with pipe characters and no real cells.</p>
-        <div class="ps-mockup">
-          | Name | Role | Salary |<br>
-          |------|------|--------|<br>
-          | Alice | Engineer | $120k |<br>
-          | Bob | Designer | $95k |
-        </div>
-      </div>
-      <div class="ps-card after">
-        <div class="ps-tag after-tag">✓ &nbsp;The Solution</div>
-        <h3>Tabifi gives you a real, pasteable table</h3>
-        <p>Upload a screenshot. Tabifi uses GPT-4o Vision to read it and copies using <code style="font-size:0.75rem;background:rgba(34,197,94,0.1);padding:2px 6px;border-radius:4px;color:#4ade80;">text/html</code> format — so Word and Google Docs paste it as a proper table.</p>
-        <div class="ps-mockup good">
-          <table class="demo-table">
-            <thead>
-              <tr><th>Name</th><th>Role</th><th>Salary</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Alice</td><td>Engineer</td><td>$120k</td></tr>
-              <tr><td>Bob</td><td>Designer</td><td>$95k</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    <h1>Turn any table screenshot<br>into a real, pasteable table.</h1>
+    <p>Drop a screenshot. Get a formatted table you can paste directly into Word or Google Docs &mdash; no reformatting, no pipe characters, no headaches.</p>
+    <div class="hero-trust">Used by <strong>2,400+</strong> people to copy tables the right way</div>
   </div>
 </section>
 
@@ -1207,6 +1262,77 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════════════
+     PROBLEM + SOLUTION
+════════════════════════════════════════════════════════════════════════ -->
+<section id="problem-solution" class="section">
+  <div class="container">
+    <div class="ps-section-head">
+      <p class="ps-eyebrow">Why it exists</p>
+      <h2 class="ps-title">The old way breaks. Tabifi fixes it.</h2>
+      <p class="ps-subtitle">AI tools produce great tables — but copy-paste destroys them. Tabifi reads the screenshot and gives you a table that actually works.</p>
+    </div><!-- /.ps-section-head -->
+    <div class="ps-grid" id="ps-grid">
+      <div class="ps-card before">
+        <div class="ps-tag before-tag">✕ &nbsp;The Problem</div>
+        <h3>Copy-paste destroys table formatting</h3>
+        <p>When you copy a table from ChatGPT or Claude and paste it into Word, you get a wall of text with pipe characters and no real cells.</p>
+        <div class="ps-mockup">
+          | Name | Role | Salary |<br>
+          |------|------|--------|<br>
+          | Alice | Engineer | $120k |<br>
+          | Bob | Designer | $95k |
+        </div>
+      </div>
+      <div class="ps-card after">
+        <div class="ps-tag after-tag">✓ &nbsp;The Solution</div>
+        <h3>Tabifi gives you a real, pasteable table</h3>
+        <p>Upload a screenshot. Tabifi uses GPT-4o Vision to read it and copies using <code style="font-size:0.75rem;background:rgba(34,197,94,0.1);padding:2px 6px;border-radius:4px;color:#4ade80;">text/html</code> format — so Word and Google Docs paste it as a proper table.</p>
+        <div class="ps-mockup good">
+          <table class="demo-table">
+            <thead>
+              <tr><th>Name</th><th>Role</th><th>Salary</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Alice</td><td>Engineer</td><td>$120k</td></tr>
+              <tr><td>Bob</td><td>Designer</td><td>$95k</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════════════════════════════ -->
+<section id="how-it-works" class="section">
+  <div class="container">
+    <div class="ps-section-head">
+      <p class="ps-eyebrow">Three steps</p>
+      <h2 class="ps-title">Simple as it gets</h2>
+    </div>
+    <div class="hiw-grid" id="hiw-grid">
+      <div class="hiw-card">
+        <div class="hiw-num">01</div>
+        <h4>Drop your screenshot</h4>
+        <p>Drag any table screenshot into the tool — from ChatGPT, Claude, Excel, PDFs, anywhere.</p>
+      </div>
+      <div class="hiw-card">
+        <div class="hiw-num">02</div>
+        <h4>AI reads it instantly</h4>
+        <p>GPT-4o Vision scans every cell and reconstructs the exact structure — headers, rows, all of it.</p>
+      </div>
+      <div class="hiw-card">
+        <div class="hiw-num">03</div>
+        <h4>Paste as a real table</h4>
+        <p>Hit Copy and paste into Word or Google Docs. It lands as a proper formatted table, not plain text.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════════════════════════════════ -->
 <footer id="footer">
@@ -1230,17 +1356,69 @@
 ════════════════════════════════════════════════════════════════════════ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="/auth-header.js"></script>
 
 <script>
+// ── Auth gate — intercept tool interactions if not logged in ─────────────────
+let _isLoggedIn = false;
+fetch('/auth/me')
+  .then(r => r.ok ? r.json() : null)
+  .then(data => { _isLoggedIn = !!data?.user; })
+  .catch(() => {});
+
+function requireLoginOrRedirect(e) {
+  if (!_isLoggedIn) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    window.location.href = '/login.html';
+  }
+}
+
+// Intercept drop zones, browse spans, extract buttons
+[
+  'single-drop-zone', 'single-browse', 'single-extract-btn',
+  'multi-drop-zone',  'multi-browse',  'multi-process-btn'
+].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', requireLoginOrRedirect, true);
+});
+
+// Also block file inputs directly
+['single-file-input', 'multi-file-input'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', requireLoginOrRedirect, true);
+});
+
 // ════════════════════════════════════════════════════════════════════════════
 // GSAP ANIMATIONS
 // ════════════════════════════════════════════════════════════════════════════
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Problem/solution + tool — fade up on load (already in viewport)
-gsap.from("#ps-grid",   { opacity: 0, y: 28, duration: 0.65, delay: 0.15, ease: "power3.out" });
+// Hero — stagger children in
+gsap.from("#hero .hero-badge", { opacity: 0, y: 16, duration: 0.5, ease: "power3.out" });
+gsap.from("#hero h1",          { opacity: 0, y: 24, duration: 0.6, delay: 0.1, ease: "power3.out" });
+gsap.from("#hero p",           { opacity: 0, y: 20, duration: 0.6, delay: 0.2, ease: "power3.out" });
+gsap.from("#hero .hero-trust", { opacity: 0, y: 16, duration: 0.5, delay: 0.3, ease: "power3.out" });
+
+// Tool — fade up after hero text
 gsap.from("#tool-card", { opacity: 0, y: 28, duration: 0.65, delay: 0.35, ease: "power3.out" });
+
+// Problem/solution section heading + cards
+gsap.from(".ps-section-head", {
+  scrollTrigger: { trigger: ".ps-section-head", start: "top 88%" },
+  opacity: 0, y: 20, duration: 0.55, ease: "power3.out"
+});
+gsap.from("#ps-grid", {
+  scrollTrigger: { trigger: "#ps-grid", start: "top 85%" },
+  opacity: 0, y: 28, duration: 0.65, ease: "power3.out"
+});
+
+// How it works — stagger cards
+gsap.from(".hiw-card", {
+  scrollTrigger: { trigger: "#hiw-grid", start: "top 85%" },
+  opacity: 0, y: 30, duration: 0.55, stagger: 0.12, ease: "power3.out"
+});
 
 // Header frosted glass on scroll
 window.addEventListener("scroll", () => {
