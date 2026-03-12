@@ -331,7 +331,7 @@
        TOOL SECTION
     ════════════════════════════════════════════════════════════════════════ */
     #tool-section {
-      padding: 80px 0 100px;
+      padding: 40px 0 80px;
       position: relative;
       z-index: 1;
     }
@@ -672,7 +672,7 @@
        PROBLEM VS SOLUTION
     ════════════════════════════════════════════════════════════════════════ */
     #problem-solution {
-      padding: 100px 0;
+      padding: 100px 0 48px;
       position: relative;
       z-index: 1;
     }
@@ -1052,72 +1052,44 @@
 </header>
 
 <!-- ════════════════════════════════════════════════════════════════════════
-     HERO
+     PROBLEM + SOLUTION
 ════════════════════════════════════════════════════════════════════════ -->
-<section id="hero" class="section">
+<section id="problem-solution" class="section">
   <div class="container">
-    <div class="hero-badge" id="hero-badge">
-      <span></span>
-      Powered by GPT-4o Vision
-    </div>
-    <h1 id="hero-title">Screenshot to Table.<br>Instantly.</h1>
-    <p id="hero-sub">Stop losing formatting when you copy AI-generated tables. Upload a screenshot, get a real table you can paste into Word or Google Docs.</p>
-    <div class="hero-ctas" id="hero-ctas">
-      <button class="hero-cta-primary" onclick="document.getElementById('tool-section').scrollIntoView({behavior:'smooth'})">Try it Free — No Signup</button>
-      <button class="hero-cta-secondary" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">See How It Works</button>
-    </div>
-    <p class="hero-trust" id="hero-trust">
-      <strong>2,400+ tables copied</strong> this week &nbsp;·&nbsp; Works with Word, Google Docs, Notion &nbsp;·&nbsp; No account needed
-    </p>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════════════
-     HOW IT WORKS
-════════════════════════════════════════════════════════════════════════ -->
-<section id="how-it-works" class="section">
-  <div class="container">
-    <div class="section-head gsap-fade">
-      <div class="section-label">How It Works</div>
-      <h2 class="section-title">Three steps to a perfect table</h2>
-      <p class="section-sub">No formatting lost. No manual typing. Just upload, extract, and paste.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card gsap-fade">
-        <div class="step-num">01</div>
-        <div class="step-icon">📸</div>
-        <h3>Upload Screenshot</h3>
-        <p>Drag and drop any screenshot of a table — from ChatGPT, Claude, a PDF, or anywhere else. Single image or multiple.</p>
+    <div class="ps-grid gsap-fade">
+      <div class="ps-card before">
+        <div class="ps-tag before-tag">✕ &nbsp;The Problem</div>
+        <h3>Copy-paste destroys table formatting</h3>
+        <p>When you copy a table from ChatGPT or Claude and paste it into Word, you get a wall of text with pipe characters and no real cells.</p>
+        <div class="ps-mockup">
+          | Name | Role | Salary |<br>
+          |------|------|--------|<br>
+          | Alice | Engineer | $120k |<br>
+          | Bob | Designer | $95k |
+        </div>
       </div>
-      <div class="step-card gsap-fade">
-        <div class="step-num">02</div>
-        <div class="step-icon">🤖</div>
-        <h3>AI Reads It</h3>
-        <p>GPT-4o Vision scans the image and extracts every header and data row into clean, structured JSON — accurately.</p>
-      </div>
-      <div class="step-card gsap-fade">
-        <div class="step-num">03</div>
-        <div class="step-icon">📋</div>
-        <h3>Paste into Word</h3>
-        <p>Click Copy Table. The clipboard stores real HTML. Paste into Word or Google Docs and get a perfectly formatted table.</p>
+      <div class="ps-card after">
+        <div class="ps-tag after-tag">✓ &nbsp;The Solution</div>
+        <h3>Tabifi gives you a real, pasteable table</h3>
+        <p>Upload a screenshot. Tabifi uses GPT-4o Vision to read it and copies using <code style="font-size:0.75rem;background:rgba(34,197,94,0.1);padding:2px 6px;border-radius:4px;color:#4ade80;">text/html</code> format — so Word and Google Docs paste it as a proper table.</p>
+        <div class="ps-mockup good">
+          ┌──────────┬────────────┬─────────┐<br>
+          │ Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ Salary &nbsp;│<br>
+          ├──────────┼────────────┼─────────┤<br>
+          │ Alice &nbsp;&nbsp;&nbsp;&nbsp;│ Engineer &nbsp;&nbsp;│ $120k &nbsp;&nbsp;│<br>
+          │ Bob &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ Designer &nbsp;&nbsp;│ $95k &nbsp;&nbsp;&nbsp;│<br>
+          └──────────┴────────────┴─────────┘
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<hr class="divider" />
 
 <!-- ════════════════════════════════════════════════════════════════════════
      TOOL
 ════════════════════════════════════════════════════════════════════════ -->
 <section id="tool-section" class="section">
   <div class="container">
-    <div class="section-head gsap-fade">
-      <div class="section-label">The Tool</div>
-      <h2 class="section-title">Try it right now</h2>
-      <p class="section-sub">Upload your screenshot below. The table will appear and be ready to copy in seconds.</p>
-    </div>
-
     <div class="tool-card gsap-fade">
 
       <!-- Mode toggle -->
@@ -1200,208 +1172,6 @@
       </div>
 
     </div><!-- /.tool-card -->
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- ════════════════════════════════════════════════════════════════════════
-     PROBLEM VS SOLUTION
-════════════════════════════════════════════════════════════════════════ -->
-<section id="problem-solution" class="section">
-  <div class="container">
-    <div class="section-head gsap-fade">
-      <div class="section-label">The Problem</div>
-      <h2 class="section-title">Why copy-paste breaks tables</h2>
-      <p class="section-sub">Copying a table from an AI chatbot strips all formatting. Tabifi fixes that.</p>
-    </div>
-    <div class="ps-grid">
-      <div class="ps-card before gsap-fade">
-        <div class="ps-tag before-tag">✕ &nbsp;Before Tabifi</div>
-        <h3>Plain text chaos</h3>
-        <p>When you copy a table from ChatGPT or Claude and paste it into Word, you get a wall of text with pipe characters and no real cells.</p>
-        <div class="ps-mockup">
-          | Name | Role | Salary |<br>
-          |------|------|--------|<br>
-          | Alice | Engineer | $120k |<br>
-          | Bob | Designer | $95k |
-        </div>
-      </div>
-      <div class="ps-card after gsap-fade">
-        <div class="ps-tag after-tag">✓ &nbsp;After Tabifi</div>
-        <h3>Real formatted table</h3>
-        <p>Tabifi copies using the <code style="font-size:0.75rem;background:rgba(34,197,94,0.1);padding:2px 6px;border-radius:4px;color:#4ade80;">text/html</code> clipboard format, so Word and Google Docs reconstruct a real table with proper cells and borders.</p>
-        <div class="ps-mockup good">
-          ┌──────────┬────────────┬─────────┐<br>
-          │ Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ Role &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ Salary &nbsp;│<br>
-          ├──────────┼────────────┼─────────┤<br>
-          │ Alice &nbsp;&nbsp;&nbsp;&nbsp;│ Engineer &nbsp;&nbsp;│ $120k &nbsp;&nbsp;│<br>
-          │ Bob &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ Designer &nbsp;&nbsp;│ $95k &nbsp;&nbsp;&nbsp;│<br>
-          └──────────┴────────────┴─────────┘
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- ════════════════════════════════════════════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════════════════════════════════════════════ -->
-<section id="testimonials" class="section">
-  <div class="container">
-    <div class="section-head gsap-fade">
-      <div class="section-label">Testimonials</div>
-      <h2 class="section-title">Loved by people who work with data</h2>
-    </div>
-    <div class="testimonial-grid">
-
-      <div class="testimonial-card gsap-fade">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-text">"I paste AI-generated tables into reports every day. Before Tabifi I had to reformat everything manually. Now it takes 10 seconds."</p>
-        <div class="testimonial-author">
-          <div class="avatar">SR</div>
-          <div>
-            <div class="author-name">Sarah R.</div>
-            <div class="author-role">Business Analyst, Deloitte</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card gsap-fade">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-text">"The multi-screenshot stitch feature is a game changer. I had a 50-row table split across 4 screenshots — merged in one click."</p>
-        <div class="testimonial-author">
-          <div class="avatar">MK</div>
-          <div>
-            <div class="author-name">Marcus K.</div>
-            <div class="author-role">Product Manager, Stripe</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card gsap-fade">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-text">"Simple, fast, and it just works. I recommended it to my whole team. We use it for every research report we write."</p>
-        <div class="testimonial-author">
-          <div class="avatar">JL</div>
-          <div>
-            <div class="author-name">Jamie L.</div>
-            <div class="author-role">Research Lead, McKinsey</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- ════════════════════════════════════════════════════════════════════════
-     PRICING
-════════════════════════════════════════════════════════════════════════ -->
-<section id="pricing" class="section">
-  <div class="container">
-    <div class="section-head gsap-fade" style="text-align:center;">
-      <div class="section-label">Pricing</div>
-      <h2 class="section-title">Simple, transparent pricing</h2>
-      <p class="section-sub" style="margin:0 auto;">Start free. Upgrade when you need more.</p>
-    </div>
-    <div class="pricing-grid">
-
-      <div class="pricing-card gsap-fade">
-        <div class="pricing-name">Free</div>
-        <div class="pricing-price">$0</div>
-        <div class="pricing-desc">Forever free, no credit card</div>
-        <ul class="pricing-features">
-          <li>10 extractions / month</li>
-          <li>Single screenshot mode</li>
-          <li>Copy as HTML table</li>
-          <li>Editable cells</li>
-        </ul>
-        <button class="pricing-btn pricing-btn-outline" onclick="document.getElementById('tool-section').scrollIntoView({behavior:'smooth'})">Get Started Free</button>
-      </div>
-
-      <div class="pricing-card highlighted gsap-fade">
-        <div class="popular-badge">Most Popular</div>
-        <div class="pricing-name">Pro</div>
-        <div class="pricing-price">$9<span>/mo</span></div>
-        <div class="pricing-desc">For individuals and power users</div>
-        <ul class="pricing-features">
-          <li>Unlimited extractions</li>
-          <li>Multi-screenshot stitching</li>
-          <li>Up to 10 images per batch</li>
-          <li>Priority processing</li>
-          <li>Export to CSV</li>
-        </ul>
-        <button class="pricing-btn pricing-btn-filled">Start Pro Trial</button>
-      </div>
-
-      <div class="pricing-card gsap-fade">
-        <div class="pricing-name">Team</div>
-        <div class="pricing-price">$29<span>/mo</span></div>
-        <div class="pricing-desc">For teams and organizations</div>
-        <ul class="pricing-features">
-          <li>Everything in Pro</li>
-          <li>Up to 10 team members</li>
-          <li>Shared usage pool</li>
-          <li>Admin dashboard</li>
-          <li>Priority email support</li>
-        </ul>
-        <button class="pricing-btn pricing-btn-outline">Contact Sales</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- ════════════════════════════════════════════════════════════════════════
-     ABOUT US
-════════════════════════════════════════════════════════════════════════ -->
-<section id="about" class="section">
-  <div class="container">
-    <div class="about-inner">
-      <div class="about-content gsap-fade">
-        <div class="section-label">About Us</div>
-        <h2 class="section-title">Built out of frustration</h2>
-        <p>I was spending 20 minutes every day reformatting tables that AI had generated perfectly — only for copy-paste to destroy the formatting the moment it hit Word.</p>
-        <p>So I built Tabifi. A small, focused tool that does one thing: takes a screenshot of a table and gives you back something you can actually use.</p>
-        <p>It uses GPT-4o Vision to read the image accurately, then copies it using the <code style="font-size:0.82rem;background:var(--surface2);padding:2px 6px;border-radius:4px;">text/html</code> clipboard format — the same format Word and Google Docs expect when they reconstruct a table on paste.</p>
-      </div>
-      <div class="about-visual gsap-fade">
-        <div class="founder-avatar">S</div>
-        <div class="founder-name">Shilp Patel</div>
-        <div class="founder-title">Founder, Tabifi</div>
-        <div class="about-stats">
-          <div class="stat-box">
-            <strong>2.4k+</strong>
-            <span>Tables copied</span>
-          </div>
-          <div class="stat-box">
-            <strong>98%</strong>
-            <span>Accuracy rate</span>
-          </div>
-          <div class="stat-box">
-            <strong>&lt;5s</strong>
-            <span>Avg. extract time</span>
-          </div>
-          <div class="stat-box">
-            <strong>10</strong>
-            <span>Max images/batch</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
