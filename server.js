@@ -34,7 +34,8 @@ const upload = multer({
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// Serve index.html
+// Serve all static HTML files (index, pricing, about, login)
+app.use(express.static(path.join(__dirname)));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
